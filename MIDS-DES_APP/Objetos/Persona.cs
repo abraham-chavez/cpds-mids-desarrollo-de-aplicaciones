@@ -31,10 +31,12 @@ namespace Objetos
         /// </summary>
         public String Pasatiempos { get; set; }
 
+        public StringBuilder PasatiemposSB { get; set; }
+
         /// <summary>
         /// Propiedad de tipo <c>Byte</c> que indica la edad de la persona
         /// </summary>
-        public  Byte Edad { get => edad; }
+        public Byte Edad { get => edad; set => edad = value; }
         #endregion
 
         #region Constructores
@@ -43,7 +45,7 @@ namespace Objetos
             this.nombre = nombre;
             this.fechaNacimiento = fechaNacimiento;
             this.ValidarFechaNacimiento();
-            
+            this.PasatiemposSB = new StringBuilder();
 
             if (DateTime.Now.Year - this.fechaNacimiento.Year < 255)
             {

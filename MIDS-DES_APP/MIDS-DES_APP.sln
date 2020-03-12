@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClasesObjetos", "ClasesObje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Objetos", "Objetos\Objetos.csproj", "{CC82CEFB-2C45-4178-933C-CBD167EFAA8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.3.3", "Modulo_1.3.3", "{AD05CB4C-4AF6-4223-B823-0DB33D76E0F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClasesVSEstructuras", "ClasesVSEstructuras\ClasesVSEstructuras.csproj", "{BBA606C0-36EB-45FF-8B72-C487923D7A13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{CC82CEFB-2C45-4178-933C-CBD167EFAA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC82CEFB-2C45-4178-933C-CBD167EFAA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC82CEFB-2C45-4178-933C-CBD167EFAA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA606C0-36EB-45FF-8B72-C487923D7A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA606C0-36EB-45FF-8B72-C487923D7A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA606C0-36EB-45FF-8B72-C487923D7A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA606C0-36EB-45FF-8B72-C487923D7A13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{74C27359-035B-4B74-9369-A7EC85DB3C2F} = {A56F1876-5665-46B9-87A1-F1AFB4907811}
 		{5251C83E-D134-4D3E-82DE-2CCD882C2CAF} = {DB615519-0817-47C2-8C1F-5034C85F22BD}
 		{CC82CEFB-2C45-4178-933C-CBD167EFAA8E} = {DB615519-0817-47C2-8C1F-5034C85F22BD}
+		{BBA606C0-36EB-45FF-8B72-C487923D7A13} = {AD05CB4C-4AF6-4223-B823-0DB33D76E0F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E019EFC-F20F-45C5-9F70-6F0134C81453}

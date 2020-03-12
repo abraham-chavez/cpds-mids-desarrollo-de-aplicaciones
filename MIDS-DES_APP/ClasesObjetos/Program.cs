@@ -25,7 +25,18 @@ namespace ClasesObjetos
             }
             tiempo.Stop();
 
-            Console.WriteLine($"Los pasatiempos de {persona.Nombre} son: {persona.Pasatiempos}");
+            //Console.WriteLine($"Los pasatiempos de {persona.Nombre} son: {persona.Pasatiempos}");
+            Console.WriteLine($"Tiempo total de ejecución: {tiempo.ElapsedMilliseconds}");
+
+            tiempo.Reset();
+            tiempo.Start();
+            for (int i = 0; i < 50000; i++)
+            {
+                persona.PasatiemposSB.Append($"Pasatiempo {i} - ");
+            }
+            tiempo.Stop();
+
+            //Console.WriteLine($"Los pasatiempos de {persona.Nombre} son: {persona.PasatiemposSB.ToString()}");
             Console.WriteLine($"Tiempo total de ejecución: {tiempo.ElapsedMilliseconds}");
 
             Console.ReadKey();
