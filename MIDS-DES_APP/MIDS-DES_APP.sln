@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.3.4", "Modulo_1.3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metodos", "Metodos\Metodos.csproj", "{C2A4FA8A-63AE-48AC-B066-0DC9FBD712B4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.3.5", "Modulo_1.3.5", "{DF77F914-A94F-4A69-BA95-A45B89911A9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excepciones", "Excepciones\Excepciones.csproj", "{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{C2A4FA8A-63AE-48AC-B066-0DC9FBD712B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2A4FA8A-63AE-48AC-B066-0DC9FBD712B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2A4FA8A-63AE-48AC-B066-0DC9FBD712B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +81,7 @@ Global
 		{CC82CEFB-2C45-4178-933C-CBD167EFAA8E} = {DB615519-0817-47C2-8C1F-5034C85F22BD}
 		{BBA606C0-36EB-45FF-8B72-C487923D7A13} = {AD05CB4C-4AF6-4223-B823-0DB33D76E0F3}
 		{C2A4FA8A-63AE-48AC-B066-0DC9FBD712B4} = {9434AAD0-A663-491B-9792-0A0425D4DA0D}
+		{92EF96E2-C673-4CC8-85F0-28C2ECD14B0A} = {DF77F914-A94F-4A69-BA95-A45B89911A9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E019EFC-F20F-45C5-9F70-6F0134C81453}
