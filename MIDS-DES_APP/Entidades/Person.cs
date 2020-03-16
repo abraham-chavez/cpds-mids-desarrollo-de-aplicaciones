@@ -51,6 +51,7 @@ namespace Entidades
         }
         #endregion
 
+        #region Methods
         public override String ToString()
         {
             return this.CreateMessageToString();
@@ -89,6 +90,7 @@ namespace Entidades
             }
 
             return $"{messageToString} Mi correo número telefónico es: {this.PhoneNumber}. Mi correo electrónico es: {this.Email}.";
-        }
+        } 
+        #endregion
     }
 }
