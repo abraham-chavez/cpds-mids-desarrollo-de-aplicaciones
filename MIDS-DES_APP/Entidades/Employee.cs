@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Employee : Person
+    public sealed class Employee : Person
     {
         #region Static fields
         private static String DOMAIN = "@myapp.com";
@@ -61,8 +61,27 @@ namespace Entidades
             String normalizedName = reg.Replace(base.Name.ToLower().Normalize(NormalizationForm.FormD), "");
             String normalizationLastName = reg.Replace(base.LastName.ToLower().Split(' ')[0].Normalize(NormalizationForm.FormD), "");
 
-            this.jobEmail = $"{normalizedName}.{normalizationLastName}.{DOMAIN}";
-        } 
+            this.jobEmail = $"{normalizedName}.{normalizationLastName}{DOMAIN}";
+        }
+
+        public sealed override string ToString()
+        {
+            String baseMessage = base.ToString();
+
+            return $"{baseMessage} Soy empleado con ID {this.employeeNumber} y mi correo electrónico del trabajo es: {this.jobEmail}";
+        }
+
+        public sealed override string ToString(IFormatProvider formatProvider)
+        {
+            String baseMessage = base.ToString(formatProvider);
+
+            return $"{baseMessage} Soy empleado con ID {this.employeeNumber} y mi correo electrónico del trabajo es: {this.jobEmail}";
+        }
+
+        public override string ExapleMethodAbstract()
+        {
+            return "Este es un mensaje desde el método ExapleMethodAbstract de la clase Emplopyee ";
+        }
         #endregion
     }
 }

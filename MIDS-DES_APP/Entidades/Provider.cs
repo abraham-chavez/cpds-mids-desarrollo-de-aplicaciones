@@ -45,5 +45,34 @@ namespace Entidades
             this.company = company;
         }
         #endregion
+
+        public override string ExapleMethodAbstract()
+        {
+            return "Este es un mensaje desde el método ExapleMethodAbstract de la clase Provider";
+        }
+    }
+
+    public class SubProvider : Provider
+    {
+        #region Constructors
+        public SubProvider(String providerID, String company) : base(providerID, company)
+        {
+        }
+
+        public SubProvider(String name, String secondName, String lastName, DateTime birthday, String rfc, String providerID, String company) :
+            base(name, secondName, lastName, birthday, rfc, providerID, company)
+        {
+        }
+
+        public SubProvider(String name, String secondName, String lastName, DateTime birthday, String rfc, String email, String phoneNumber, String providerID, String company) :
+            base(name, secondName, lastName, birthday, rfc, email, phoneNumber, providerID, company)
+        {
+        }
+        #endregion
+
+        public override string ExapleMethodAbstract()
+        {
+            return "Este es un mensaje desde el método ExapleMethodAbstract de la clase SubProvider";
+        }
     }
 }

@@ -50,14 +50,14 @@ namespace Entidades
             this.PhoneNumber = phoneNumber;
         }
         #endregion
-
+        
         #region Methods
         public override String ToString()
         {
             return this.CreateMessageToString();
         }
 
-        public String ToString(IFormatProvider formatProvider)
+        public virtual String ToString(IFormatProvider formatProvider)
         {
             return this.CreateMessageToString(formatProvider);
         }
@@ -90,7 +90,9 @@ namespace Entidades
             }
 
             return $"{messageToString} Mi correo número telefónico es: {this.PhoneNumber}. Mi correo electrónico es: {this.Email}.";
-        } 
+        }
+
+        public abstract String ExapleMethodAbstract();
         #endregion
     }
 }
