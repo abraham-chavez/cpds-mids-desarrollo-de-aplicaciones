@@ -13,25 +13,60 @@ namespace Registro
         static void Main(string[] args)
         {
             Employee employee = new Employee("Pedro", String.Empty, "Pérez Penas", new DateTime(2000, 01, 01), "AAAA000101ABC", "123456");
-            Person employee1 = new Employee("Francisco", String.Empty, "Pérez Penas", new DateTime(2001, 01, 01), "AAAA010101ABC", "1234567");
+            Employee employee1 = new Employee("Francisco", String.Empty, "Pérez Penas", new DateTime(2001, 01, 01), "AAAA010101ABC", "1234567");
 
             Provider provider1 = new Provider("Luis", String.Empty, "Pérez Penas", new DateTime(2001, 06, 20), "AAAA010101ABC", "1234568", "Empresa de cositas");
             Person provider2 = new Provider("Hugo", String.Empty, "Pérez Penas", new DateTime(2002, 06, 20), "AAAA010101ABC", "1234569", "Empresa de cositas");
             SubProvider subProvider = new SubProvider("Juan", String.Empty, "Pérez Penas", new DateTime(2002, 06, 20), "AAAA010101ABC", "1234569", "Empresa de cositas");
-
+            
             Person[] persons = new Person[5];
             persons[0] = employee;
             persons[1] = employee1;
             persons[2] = provider1;
             persons[3] = provider2;
             persons[4] = subProvider;
-
+            
             for (int i = 0; i < persons.Length; i++)
             {
                 Console.WriteLine(persons[i].ExapleMethodAbstract() + $" - Soy del tipo {persons[i].GetType().ToString()}");
             }
 
             Console.ReadKey();
+
+            RegistroLog<Employee> registroLog = new RegistroLog<Employee>();
+            registroLog.LogPersona(employee);
+            registroLog.LogPersona(employee1);
+
+            foreach (Employee item in registroLog.Personas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.ReadKey();
+        }
+    }
+
+    public class RegistroLog<T> where T : Person
+    {
+        private List<T> personas;
+
+        public List<T> Personas { get => personas; }
+
+
+        public RegistroLog()
+        {
+            this.personas = new List<T>();
+        }
+
+
+        public void LogPersona(T persona)
+        {
+            this.personas.Add(persona);
+        }
+
+        public void LogProvider<U>() where U : Provider
+        {
+
         }
     }
 }

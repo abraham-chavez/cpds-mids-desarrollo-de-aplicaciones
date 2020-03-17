@@ -67,7 +67,7 @@ namespace Entidades
         public sealed override string ToString()
         {
             String baseMessage = base.ToString();
-
+            Console.WriteLine($"{baseMessage} Soy empleado con ID {this.employeeNumber} y mi correo electrónico del trabajo es: {this.jobEmail}");
             return $"{baseMessage} Soy empleado con ID {this.employeeNumber} y mi correo electrónico del trabajo es: {this.jobEmail}";
         }
 
@@ -80,7 +80,13 @@ namespace Entidades
 
         public override string ExapleMethodAbstract()
         {
+            Console.WriteLine("Este es un mensaje desde el método ExapleMethodAbstract de la clase Emplopyee ");
             return "Este es un mensaje desde el método ExapleMethodAbstract de la clase Emplopyee ";
+        }
+
+        public void ExapleMethodAction(String value)
+        {
+            Console.WriteLine($"Mi nombre es {this.Name} y el valor pasado como parámetro es: {value}");
         }
         #endregion
     }
