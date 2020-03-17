@@ -55,6 +55,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.4.1", "Modulo_1.4.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multitask", "Multitask\Multitask.csproj", "{ADFB9D19-8E56-404E-A47D-991B89848C5B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.4.2", "Modulo_1.4.2", "{54BC6833-5DE6-4C2F-9745-4E8D92496793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperacionesAsincronas", "OperacionesAsincronas\OperacionesAsincronas.csproj", "{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,10 @@ Global
 		{ADFB9D19-8E56-404E-A47D-991B89848C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADFB9D19-8E56-404E-A47D-991B89848C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADFB9D19-8E56-404E-A47D-991B89848C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +149,7 @@ Global
 		{8A8B445C-9C05-42AD-9AE7-26E4857D04FF} = {BFD36AFC-6A07-4BA6-9504-A3B9C96AD6E0}
 		{BE482E7B-1E08-4C94-ADD8-EF78E92A31B7} = {3BD5C8D8-8DE6-4A22-8505-47F390774425}
 		{ADFB9D19-8E56-404E-A47D-991B89848C5B} = {81624C92-E383-48E3-A4BC-63E9F10E2D4A}
+		{AF8D0987-9BBC-4F99-9E4A-BC721EDF21F8} = {54BC6833-5DE6-4C2F-9745-4E8D92496793}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E019EFC-F20F-45C5-9F70-6F0134C81453}
