@@ -79,6 +79,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modulo_1.6.1", "Modulo_1.6.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroApp", "RegistroApp\RegistroApp.csproj", "{AAE83458-E6B8-485C-AF65-CE123BE7E330}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +175,10 @@ Global
 		{AAE83458-E6B8-485C-AF65-CE123BE7E330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE83458-E6B8-485C-AF65-CE123BE7E330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE83458-E6B8-485C-AF65-CE123BE7E330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,6 +206,7 @@ Global
 		{84DDFA09-51E3-4319-BDE1-B26C3FCF19DA} = {45393358-4B01-47E9-B7A2-C09FF76061B3}
 		{1E1767F2-BF3C-46BD-B654-B396DA766B95} = {45393358-4B01-47E9-B7A2-C09FF76061B3}
 		{AAE83458-E6B8-485C-AF65-CE123BE7E330} = {ABE8E719-D067-4C70-A2F6-B75BA21F4263}
+		{DE1F7FE3-4BD4-4D37-9E0A-C9A800C11CBD} = {ABE8E719-D067-4C70-A2F6-B75BA21F4263}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E019EFC-F20F-45C5-9F70-6F0134C81453}

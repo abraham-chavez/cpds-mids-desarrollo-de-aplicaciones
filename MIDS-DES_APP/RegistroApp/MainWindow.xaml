@@ -4,8 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistroApp"
+        xmlns:convertions="clr-namespace:RegistroApp.Convertions"
         mc:Ignorable="d"
         Title="Registro" Height="450" Width="800">
+
+    <Window.Resources>
+        <local:RegistrationViewModel x:Key="RegistrationViewModel" x:Name="RegistrationViewModel"/>
+        <convertions:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" x:Name="BoolToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <StaticResource ResourceKey="RegistrationViewModel"/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -31,47 +42,59 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Label Name="Name" Content="Nombre" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="Name" Content="Nombre" Grid.Column="0" Grid.Row="0" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="0" Grid.Row="1" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.Name, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
-            <Label Name="SecondName" Content="Segundo nombre" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="SecondName" Content="Segundo nombre" Grid.Column="1" Grid.Row="0" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.SecondName, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
-            <Label Name="LastName" Content="Apellidos" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
-            
-
-            <Label Name="Birthday" Content="Fecha de nacimiento" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
-
-            <Label Name="RFC" Content="RFC" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
-
-            <Label Name="Email" Content="Correo electrónico" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="LastName" Content="Apellidos" Grid.Column="2" Grid.Row="0" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="2" Grid.Row="1" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.LastName, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
 
-            <Label Name="PhoneNumber" Content="Número telefónico" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="Birthday" Content="Fecha de nacimiento" Grid.Column="0" Grid.Row="2" Style="{StaticResource FormLabelStyle}"/>
+            <DatePicker Grid.Column="0" Grid.Row="3" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.Birthday, Mode=TwoWay}" VerticalAlignment="Center" Margin="5"/>
 
-            <Label Name="Department" Content="Departamento" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="RFC" Content="RFC" Grid.Column="1" Grid.Row="2" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="1" Grid.Row="3" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.Rfc, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
-            <Label Name="JobPosition" Content="Puesto" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="Email" Content="Correo electrónico" Grid.Column="2" Grid.Row="2" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="2" Grid.Row="3" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.Email, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
 
-            <Label Name="EmployeeNumber" Content="Número de empleado" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" Margin="5" IsEnabled="False"/>
-            
-            <Label Name="JobPhoneNumber" Content="Número telefónico oficina" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="PhoneNumber" Content="Número telefónico" Grid.Column="0" Grid.Row="4" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="0" Grid.Row="5" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.PhoneNumber, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
-            <Label Name="JobMail" Content="Correo electrónico oficina" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <TextBox Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="Department" Content="Departamento" Grid.Column="1" Grid.Row="4" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="1" Grid.Row="5" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.Department, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
 
-            <Label Name="Password" Content="Contraseña" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-            <PasswordBox Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" Margin="5"/>
+            <Label Name="JobPosition" Content="Puesto" Grid.Column="2" Grid.Row="4" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="2" Grid.Row="5" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}" 
+                     Text="{Binding Path=Employee.JobPosition, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
+
+
+            <Label Name="EmployeeNumber" Content="Número de empleado" Grid.Column="0" Grid.Row="6" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="0" Grid.Row="7"
+                     Text="{Binding Path=Employee.EmployeeNumber, Mode=OneWay}" Style="{StaticResource GeneralTextboxStyle}" IsEnabled="False"/>
+
+            <Label Name="JobPhoneNumber" Content="Número telefónico oficina" Grid.Column="1" Grid.Row="6" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="1" Grid.Row="7" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.JobPhoneNumber, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
+
+            <Label Name="JobMail" Content="Correo electrónico oficina" Grid.Column="0" Grid.Row="8" Style="{StaticResource FormLabelStyle}"/>
+            <TextBox Grid.Column="0" Grid.Row="9" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}"
+                     Text="{Binding Path=Employee.JobEmail, Mode=TwoWay}" Style="{StaticResource GeneralTextboxStyle}"/>
+
+            <Label Content="Contraseña" Grid.Column="1" Grid.Row="8" Style="{StaticResource FormLabelStyle}"/>
+            <PasswordBox x:Name="Password" Grid.Column="1" Grid.Row="9" IsEnabled="{Binding Path=IsEnabledControl, Mode=OneWay}" VerticalAlignment="Center" Margin="5" PasswordChanged="PasswordBox_PasswordChanged"/>
 
             <Grid Grid.Row="6" Grid.RowSpan="4" Grid.Column="2">
                 <Grid.ColumnDefinitions>
@@ -80,13 +103,52 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Content="Nuevo" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
-                <Button Content="Editar"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
-                <Button Content="Eliminar"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
-                <Button Content="Guardar" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
-                <Button Content="Cancelar" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                <Button Content="Nuevo" Grid.Column="0" Command="{Binding Path=NewEmployeeCommand}" Visibility="{Binding Path=NewButtonVisibility, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource GeneralButtonStyle}"/>
+                <Button Content="Editar"  Grid.Column="1" Visibility="{Binding Path=EditButtonVisibility, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource GeneralButtonStyle}"/>
+                <Button Content="Eliminar"  Grid.Column="2" Visibility="{Binding Path=DeleteButtonVisibility, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource GeneralButtonStyle}"/>
+                <Button Content="Guardar" Grid.Column="0" Command="{Binding Path=SaveEmployeeCommand}" Visibility="{Binding Path=SaveButtonVisibility, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource GeneralButtonStyle}"/>
+                <Button Content="Cancelar" Grid.Column="1" Visibility="{Binding Path=CancelButtonVisibility, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource GeneralButtonStyle}"/>
             </Grid>
 
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <ListBox ItemsSource="{Binding Path=Employees}" SelectedIndex="{Binding Path=SelectedIndex}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="BorderBrush" Value="LightBlue"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="No. Emp.:" Grid.Row="0" Grid.Column="0" Style="{StaticResource ItemLabelStyle}"/>
+                            <Label Content="{Binding Path=EmployeeNumber}" Grid.Row="0" Grid.Column="1" Style="{StaticResource ItemRLabelStyle}"/>
+
+                            <Label Content="Nombre:" Grid.Row="1" Grid.Column="0" Style="{StaticResource ItemLabelStyle}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontStyle="Italic">
+                                <Run Text="{Binding Path=Name}"/>
+                                <Run Text="{Binding Path=LastName}"/>
+                            </TextBlock>
+
+                            <Label Content="Correo:" Grid.Row="2" Grid.Column="0" Style="{StaticResource ItemLabelStyle}"/>
+                            <Label Content="{Binding Path=JobEmail}" Grid.Row="2" Grid.Column="1" Style="{StaticResource ItemRLabelStyle}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </Window>

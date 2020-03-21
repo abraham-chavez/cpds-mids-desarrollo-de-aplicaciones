@@ -24,5 +24,15 @@ namespace RegistroApp
         {
             InitializeComponent();
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            RegistrationViewModel rgvm = (RegistrationViewModel)this.DataContext;
+
+            if (rgvm != null)
+            {
+                ((RegistrationViewModel)this.DataContext).Employee.Password = this.Password.Password;
+            }
+        }
     }
 }
