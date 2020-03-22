@@ -123,6 +123,8 @@ namespace RegistroApp
             this.NewEmployeeCommand = new ExecutionCommand(NewEmployee);
             this.SaveEmployeeCommand = new ExecutionCommand(SaveEmployee);
             this.SelectedIndex = -1;
+
+            this.GetEmployees();
         }
         #endregion
 
@@ -135,9 +137,10 @@ namespace RegistroApp
 
         private void SaveEmployee()
         {
-            this.Employees.Add(this.employee);
+            this.InsertEmployee();
             this.Employee = new Employee();
             this.DisbaleEdition();
+            this.GetEmployees();
         }
 
         private void EnableEdition()
@@ -158,6 +161,61 @@ namespace RegistroApp
             this.SaveButtonVisibility = false;
             this.CancelButtonVisibility = false;
             this.IsEnabledControl = false;
+        }
+
+        private void InsertEmployee()
+        {
+            using (RegistroApp.DataContext.CPDSEntities context= new DataContext.CPDSEntities())
+            {
+                context.Employee.Add(new DataContext.Employee()
+                {
+                    Birthday = employee.Birthday,
+                    Department = employee.Department,
+                    Email = employee.Email,
+                    JobMail = employee.JobEmail,
+                    JobPhoneNumber = employee.JobPhoneNumber,
+                    JobPosition = employee.JobPosition,
+                    LastName = employee.LastName,
+                    Name = employee.Name,
+                    Password = employee.Password,
+                    PhoneNumber = employee.PhoneNumber,
+                    RFC = employee.Rfc,
+                    SecondName = employee.SecondName
+                });
+                context.SaveChanges();
+            }
+        }
+
+        private void GetEmployees()
+        {
+            this.Employees = new ObservableCollection<Employee>();
+            using (RegistroApp.DataContext.CPDSEntities context = new RegistroApp.DataContext.CPDSEntities())
+            {
+                //var resultQuery = from emp in context.Employee.ToList() where emp.Department=="TI" select new { emp.Birthday };
+                //var y = context.Employee.ToList().Select
+
+                foreach (var item in context.Employee)
+                {
+                    this.Employees.Add(new Employee()
+                    {
+                        Birthday = item.Birthday,
+                        Department = item.Department,
+                        Email = item.Email,
+                        EmployeeNumber = item.EmployeeID.ToString(),
+                        JobEmail = item.JobMail,
+                        JobPhoneNumber = item.JobPhoneNumber,
+                        JobPosition = item.JobPosition,
+                        LastName = item.LastName,
+                        Name = item.Name,
+                        Password = item.Password,
+                        PhoneNumber = item.PhoneNumber,
+                        Rfc = item.RFC,
+                        SecondName = item.SecondName
+                    });
+                }
+            }
+
+            this.OnPropertyChanged("Employees");
         }
 
         public void OnPropertyChanged([CallerMemberName] String propertyName = null)
