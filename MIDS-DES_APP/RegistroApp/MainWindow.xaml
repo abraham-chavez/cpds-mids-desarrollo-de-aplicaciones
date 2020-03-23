@@ -9,13 +9,13 @@
         Title="Registro" Height="450" Width="800">
 
     <Window.Resources>
-        <local:RegistrationViewModel x:Key="RegistrationViewModel" x:Name="RegistrationViewModel"/>
+        <!--<local:RegistrationViewModel x:Key="RegistrationViewModel" x:Name="RegistrationViewModel"/>-->
         <convertions:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" x:Name="BoolToVisibilityConverter"/>
     </Window.Resources>
 
-    <Window.DataContext>
-        <StaticResource ResourceKey="RegistrationViewModel"/>
-    </Window.DataContext>
+    <!--<Window.DataContext>
+        --><!--<StaticResource ResourceKey="RegistrationViewModel"/>--><!--
+    </Window.DataContext>-->
 
     <Grid>
         <Grid.ColumnDefinitions>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XFRegistration.Views.ItemsPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FrameCardViewStyle" x:Name="FrameCardViewStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BorderColor" Value="Linen"/>
+            </Style>
+
+            <Style x:Key="profileImageFrameStyle" x:Name="profileImageFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
+            <Style x:Key="profileImageStyle" x:Name="profileImageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="80"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="Aspect" Value="Fill"/>
+            </Style>
+
+            <Style x:Key="imageStyle" x:Name="imageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="16"/>
+                <Setter Property="HeightRequest" Value="16"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource FrameCardViewStyle}">
+                        <StackLayout Orientation="Vertical" Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Frame Style="{StaticResource profileImageFrameStyle}" Grid.RowSpan="3">
+                                    <Image Style="{StaticResource profileImageStyle}" Source="profile04.png"/>
+                                </Frame>
+                                <Label Text="{Binding Path=Text}" Grid.Column="1" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" VerticalOptions="Center" FontSize="16" FontAttributes="Bold"/>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                    <Image Source="id.png" Style="{StaticResource imageStyle}"/>
+                                    <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" VerticalOptions="Center" FontSize="16"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                    <Image Source="mail.png" Style="{StaticResource imageStyle}"/>
+                                    <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" VerticalOptions="Center" FontSize="16"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                                    <Image Source="phone.png" Style="{StaticResource imageStyle}"/>
+                                    <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" VerticalOptions="Center" FontSize="16"/>
+                                </StackLayout>
+
+
+                            </Grid>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </Frame>
+                    <!--<StackLayout Padding="10" Orientation="Vertical">
+                        
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nombre: " LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                            <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                            <Label Text="{Binding Path=Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Email personal:" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                            <Label Text="{Binding Path=Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Departamento: " LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                            <Label Text="{Binding Path=Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Puesto: " LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                            <Label Text="{Binding Path=Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Email oficina: " LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                            <Label Text="{Binding Path=Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" VerticalOptions="Center" FontSize="13"/>
+                        </StackLayout>-->
+
+
+                    <!--StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers> -->
+                    <!--</StackLayout>-->
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
