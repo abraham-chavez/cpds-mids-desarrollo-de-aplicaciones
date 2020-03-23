@@ -16,7 +16,7 @@
     <Window.DataContext>
         <StaticResource ResourceKey="RegistrationViewModel"/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -113,7 +113,17 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <ListBox ItemsSource="{Binding Path=Employees}" SelectedIndex="{Binding Path=SelectedIndex}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Criterio" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Path=SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GeneralTextboxStyle}" Width="150"/>
+            </StackPanel>
+            
+            <ListBox ItemsSource="{Binding Path=Employees}" SelectedIndex="{Binding Path=SelectedIndex}" Grid.Row="1">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="BorderThickness" Value="2"/>

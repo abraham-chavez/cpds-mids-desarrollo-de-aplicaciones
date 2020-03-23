@@ -26,6 +26,8 @@ namespace RegistroApp
         private Boolean isEnabledControl;
         private Employee employee;
         private Int32 selectedIndex;
+        private String searchText;
+        private ObservableCollection<Employee> employees;
         #endregion
 
         #region Properties
@@ -109,8 +111,28 @@ namespace RegistroApp
                 }
             }
         }
+        public string SearchText
+        {
+            get => this.searchText;
+            set
+            {
+                this.searchText = value;
+                this.OnPropertyChanged();
+                this.FilterEmployees(this.searchText);
+            }
+        }
 
-        public ObservableCollection<Employee> Employees { get; set; }
+        public ObservableCollection<Employee> Employees
+        {
+            get => this.employees;
+            set
+            {
+                this.employees = value;
+
+                this.OnPropertyChanged();
+            }
+        }
+
         public ICommand NewEmployeeCommand { get; set; }
         public ICommand SaveEmployeeCommand { get; set; }
         #endregion
@@ -129,6 +151,43 @@ namespace RegistroApp
         #endregion
 
         #region Methods
+        private void FilterEmployees(String text)
+        {
+            this.Employees = new ObservableCollection<Employee>();
+
+            using (RegistroApp.DataContext.CPDSEntities context = new DataContext.CPDSEntities())
+            {
+                Func<DataContext.Employee, Boolean> searchCriteria = emp =>
+                emp.EmployeeID.ToString().Contains(text) ||
+                emp.Department.ToLower().Contains(text.ToLower()) ||
+                emp.Email.ToLower().Contains(text.ToLower()) ||
+                emp.JobMail.ToLower().Contains(text.ToLower()) ||
+                //emp.JobPhoneNumber.ToLower().Contains(text.ToLower()) ||
+                emp.JobPosition.ToLower().Contains(text.ToLower()) ||
+                emp.PhoneNumber.ToLower().Contains(text.ToLower());
+
+                foreach (var item in context.Employee.Where(searchCriteria))
+                {
+                    this.Employees.Add(new Employee()
+                    {
+                        Birthday = item.Birthday,
+                        Department = item.Department,
+                        Email = item.Email,
+                        EmployeeNumber = item.EmployeeID.ToString(),
+                        JobEmail = item.JobMail,
+                        JobPhoneNumber = item.JobPhoneNumber,
+                        JobPosition = item.JobPosition,
+                        LastName = item.LastName,
+                        Name = item.Name,
+                        Password = item.Password,
+                        PhoneNumber = item.PhoneNumber,
+                        Rfc = item.RFC,
+                        SecondName = item.SecondName
+                    });
+                }
+            }
+        }
+
         private void NewEmployee()
         {
             this.EnableEdition();
@@ -165,7 +224,7 @@ namespace RegistroApp
 
         private void InsertEmployee()
         {
-            using (RegistroApp.DataContext.CPDSEntities context= new DataContext.CPDSEntities())
+            using (RegistroApp.DataContext.CPDSEntities context = new DataContext.CPDSEntities())
             {
                 context.Employee.Add(new DataContext.Employee()
                 {
@@ -214,8 +273,6 @@ namespace RegistroApp
                     });
                 }
             }
-
-            this.OnPropertyChanged("Employees");
         }
 
         public void OnPropertyChanged([CallerMemberName] String propertyName = null)
