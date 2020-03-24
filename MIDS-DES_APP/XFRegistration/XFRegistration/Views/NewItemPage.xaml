@@ -5,20 +5,147 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XFRegistration.Views.NewItemPage"
-             Title="New Item">
-    
+             Title="Registro empleado">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancelar" Clicked="Cancel_Clicked" />
         <ToolbarItem Text="Guardar" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
-    
+
+    <ContentPage.Resources>
+        <Style x:Key="NameLabel" x:Name="NameLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="imageStyle" x:Name="imageStyle" TargetType="Image">
+            <Setter Property="WidthRequest" Value="28"/>
+            <Setter Property="HeightRequest" Value="28"/>
+        </Style>
+
+        <Style x:Key="imageLabelStackLayout" TargetType="StackLayout">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" x:Name="EntryStyle" TargetType="Entry">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="id.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Nombre" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="id.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Segundo nombre" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="id.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Apellidos" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="settings.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Fecha de nacimiento" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <DatePicker />
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="contacts.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="RFC" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="mail.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Correo electrónico personal" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="phone.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Número telefónico personal" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="company.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Departamento" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="designation.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Puesto" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="phone.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Número telefónico Oficina" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="mail.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Correo electrónico oficina" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource imageLabelStackLayout}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="user.png" Style="{StaticResource imageStyle}"/>
+                        <Label Text="Contraseña" Style="{StaticResource NameLabel}"/>
+                    </StackLayout>
+                    
+                    <Entry Style="{StaticResource EntryStyle}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
-    
 </ContentPage>
