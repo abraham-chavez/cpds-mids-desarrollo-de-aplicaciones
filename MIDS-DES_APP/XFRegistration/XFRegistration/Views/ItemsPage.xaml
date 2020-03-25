@@ -80,8 +80,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-        <ListView x:Name="ItemsCollectionView" ItemsSource="{Binding Items}" HasUnevenRows="True" SeparatorVisibility="None">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadEmplpoyeesCommand}">
+        <ListView x:Name="ItemsCollectionView" ItemsSource="{Binding Employees, Mode=TwoWay}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -97,24 +97,24 @@
                             <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}">
                                 <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
                                     <Frame Style="{StaticResource profileImageFrameStyle}" >
-                                        <Image Style="{StaticResource profileImageStyle}" Source="profile04.png"/>
+                                        <Image Style="{StaticResource profileImageStyle}" Source="{Binding Path=PhotoURL}"/>
                                     </Frame>
                                     <StackLayout Style="{StaticResource detailsStackLayout}">
-                                        <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{StaticResource NameLabel}" />
+                                        <Label Text="{Binding Path=FullName}" LineBreakMode="NoWrap" Style="{StaticResource NameLabel}"/>
 
                                         <StackLayout Style="{StaticResource imageLabelStackLayout}">
                                             <Image Source="id.png" Style="{StaticResource imageStyle}"/>
-                                            <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{StaticResource JobTitleLabelStyle}"/>
+                                            <Label Text="{Binding Path=EmployeeNumber}" LineBreakMode="NoWrap" Style="{StaticResource JobTitleLabelStyle}"/>
                                         </StackLayout>
 
                                         <StackLayout Style="{StaticResource imageLabelStackLayout}">
                                             <Image Source="mail.png" Style="{StaticResource imageStyle}"/>
-                                            <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{StaticResource LabelStyle}"/>
+                                            <Label Text="{Binding Path=JobEmail}" LineBreakMode="NoWrap" Style="{StaticResource LabelStyle}"/>
                                         </StackLayout>
 
                                         <StackLayout Style="{StaticResource imageLabelStackLayout}">
                                             <Image Source="phone.png" Style="{StaticResource imageStyle}"/>
-                                            <Label Text="{Binding Path=Text}" LineBreakMode="NoWrap" Style="{StaticResource LabelStyle}"/>
+                                            <Label Text="{Binding Path=JobPhoneNumber}" LineBreakMode="NoWrap" Style="{StaticResource LabelStyle}"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

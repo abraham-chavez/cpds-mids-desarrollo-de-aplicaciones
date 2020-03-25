@@ -24,7 +24,7 @@ namespace XFRegistration.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            this.BindingContext = this.viewModel = new ItemsViewModel();
         }
 
         async void OnItemSelected(object sender, EventArgs args)
@@ -43,7 +43,7 @@ namespace XFRegistration.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.Employees.Count == 0)
                 viewModel.IsBusy = true;
         }
     }

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using XFRegistration.Models;
+using XFRegistration.ViewModels;
 
 namespace XFRegistration.Views
 {
@@ -13,28 +14,31 @@ namespace XFRegistration.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        private NewItemViewModel context;
 
         public NewItemPage()
         {
             InitializeComponent();
-
-            Item = new Item
-            {
-                Text = "Item name",
-                Description = "This is an item description."
-            };
-
-            BindingContext = this;
+            BindingContext = context = new NewItemViewModel();
+            context.SaveEmployeeFinished = SaveEmployeeFinished;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        private async void SaveEmployeeFinished(Boolean status, String message)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            await this.DisplayAlert("Guardar Empleado", message, "Aceptar");
+
+            if (status == true)
+            {
+                //MessagingCenter.Send(this, "AddItem", context.Employee);
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await Navigation.PopModalAsync();
+            }
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
