@@ -18,13 +18,16 @@ namespace XFRegistration.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
+            (this.BindingContext as ItemsViewModel).DeleteEmployeeCompleted = DeleteEmployeeCompleted;
+        }
 
-            this.BindingContext = this.viewModel = new ItemsViewModel();
+        private async void DeleteEmployeeCompleted(Boolean status, String message)
+        {
+            await this.DisplayAlert("Eliminar empleado", message, "Aceptar");
         }
 
         async void OnItemSelected(object sender, EventArgs args)
@@ -43,8 +46,8 @@ namespace XFRegistration.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Employees.Count == 0)
-                viewModel.IsBusy = true;
+            if ((this.BindingContext as ItemsViewModel).Employees.Count == 0)
+                (this.BindingContext as ItemsViewModel).IsBusy = true;
         }
     }
 }

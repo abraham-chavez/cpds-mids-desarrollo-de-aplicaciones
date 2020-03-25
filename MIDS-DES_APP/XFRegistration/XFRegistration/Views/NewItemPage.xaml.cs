@@ -29,11 +29,7 @@ namespace XFRegistration.Views
 
             if (status == true)
             {
-                //MessagingCenter.Send(this, "AddItem", context.Employee);
-                await Navigation.PopModalAsync();
-            }
-            else
-            {
+                MessagingCenter.Send(this, "AddItem", context.Employee);
                 await Navigation.PopModalAsync();
             }
         }

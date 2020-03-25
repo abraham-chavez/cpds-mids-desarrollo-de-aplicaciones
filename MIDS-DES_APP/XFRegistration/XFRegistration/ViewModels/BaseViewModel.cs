@@ -12,22 +12,29 @@ namespace XFRegistration.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        bool isBusy = false;
+
+        #region Fields
+        private bool isBusy = false;
+        private string title = string.Empty;
+        #endregion
+
+        #region Properties
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
         public string Title
         {
             get { return title; }
             set { SetProperty(ref title, value); }
         }
+        #endregion
 
+        #region Methods
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
@@ -39,10 +46,10 @@ namespace XFRegistration.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
-        }
+        } 
+        #endregion
 
         #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;

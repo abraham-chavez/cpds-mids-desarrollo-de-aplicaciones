@@ -14,8 +14,11 @@ namespace XFRegistration.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        public delegate void DeleteEmployeeCompletedDelegate(Boolean status, String message);
+
         #region Fields
         private ObservableCollection<Employee> employees;
+        public DeleteEmployeeCompletedDelegate DeleteEmployeeCompleted;
         #endregion
 
         #region Properties
@@ -30,6 +33,7 @@ namespace XFRegistration.ViewModels
         }
 
         public Command LoadEmplpoyeesCommand { get; set; }
+        public Command DeleteEmployeeCommand { get; set; }
         #endregion
 
         #region Constructors
@@ -38,15 +42,31 @@ namespace XFRegistration.ViewModels
             base.Title = "Empleados";
             this.Employees = new ObservableCollection<Employee>();
             this.LoadEmplpoyeesCommand = new Command(async () => await ExecuteLoadEmployeesCommand());
+            this.DeleteEmployeeCommand = new Command(async (emp) => await DeleteEmployee(emp));
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Employee>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
-                //Employees.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                await this.ExecuteLoadEmployeesCommand();
             });
         }
         #endregion
+
+        private async Task DeleteEmployee(Object employee)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var result = await httpClient.DeleteAsync($"https://desarrollodeaplicacionescpds.azurewebsites.net/api/Employee/{(employee as Employee).EmployeeNumber}");
+
+            if (result.IsSuccessStatusCode == true)
+            {
+                this.DeleteEmployeeCompleted(true, "El empleado fue eliminado correctamente");
+                await this.ExecuteLoadEmployeesCommand();
+            }
+            else
+            {
+                this.DeleteEmployeeCompleted(false, "Ocurrió un error al intentar eliminar el empleado");
+            }
+        }
 
         private async Task ExecuteLoadEmployeesCommand()
         {

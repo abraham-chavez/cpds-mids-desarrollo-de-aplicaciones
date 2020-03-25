@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:XFRegistration.ViewModels"
              mc:Ignorable="d"
              x:Class="XFRegistration.Views.ItemsPage"
              Title="{Binding Title}"
@@ -14,6 +15,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <vm:ItemsViewModel x:Key="ItemsViewModel" x:Name="ItemsViewModel"/>
+
             <Style x:Key="NameLabel" x:Name="NameLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -80,6 +83,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.BindingContext>
+        <StaticResource Key="ItemsViewModel"/>
+    </ContentPage.BindingContext>
+
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadEmplpoyeesCommand}">
         <ListView x:Name="ItemsCollectionView" ItemsSource="{Binding Employees, Mode=TwoWay}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
@@ -88,7 +95,7 @@
                         <ViewCell.ContextActions>
                             <MenuItem Text="Consultar"/>
                             <MenuItem Text="Editar"/>
-                            <MenuItem Text="Eliminar"/>
+                            <MenuItem Text="Eliminar" Command="{Binding Path=DeleteEmployeeCommand, Source={StaticResource ItemsViewModel}}" CommandParameter="{Binding .}"/>
                             <MenuItem Text="Llamar"/>
                             <MenuItem Text="Envíar email"/>
                         </ViewCell.ContextActions>
