@@ -95,8 +95,8 @@
                         <ViewCell.ContextActions>
                             <MenuItem Text="Consultar" Clicked="ViewEmployeeDetail_Clicked"/>
                             <MenuItem Text="Eliminar" Command="{Binding Path=DeleteEmployeeCommand, Source={StaticResource ItemsViewModel}}" CommandParameter="{Binding .}"/>
-                            <MenuItem Text="Llamar"/>
-                            <MenuItem Text="Envíar email"/>
+                            <MenuItem Text="Llamar" Clicked="CallEmployee_Clicked"/>
+                            <MenuItem Text="Envíar email" Clicked="SendEmailEmployee_Clicked"/>
                         </ViewCell.ContextActions>
 
                         <Frame Style="{StaticResource FrameCardViewStyle}">

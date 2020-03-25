@@ -11,6 +11,7 @@ using XFRegistration.Models;
 using XFRegistration.Views;
 using XFRegistration.ViewModels;
 using XFRegistration.Entities;
+using Xamarin.Essentials;
 
 namespace XFRegistration.Views
 {
@@ -47,6 +48,37 @@ namespace XFRegistration.Views
 
             if ((this.BindingContext as ItemsViewModel).Employees.Count == 0)
                 (this.BindingContext as ItemsViewModel).IsBusy = true;
+        }
+
+        private async void CallEmployee_Clicked(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)(sender as BindableObject).BindingContext;
+
+            Boolean result = await this.DisplayAlert($"Llamar a {employee.Name}", $"¿Estás seguro de llamar a {employee.Name}?", "Llamar", "Cancelar");
+
+            if (result == true)
+            {
+                await Launcher.OpenAsync(new Uri($"tel:{employee.JobPhoneNumber}"));
+            }
+        }
+
+        private async void SendEmailEmployee_Clicked(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)(sender as BindableObject).BindingContext;
+
+            Boolean result = await this.DisplayAlert($"Enviar correo a {employee.Name}", $"¿Estás seguro de enviar un correo a {employee.Name}?", "Enviar", "Cancelar");
+
+            if (result == true)
+            {
+                EmailMessage emailMessage = new EmailMessage()
+                {
+                    Subject = "Correo de prueba",
+                    Body = "Este es un correo de prueba mandado desde mi aplicación Xamarin",
+                    To = new List<string>() { employee.JobEmail }
+                };
+
+                await Email.ComposeAsync(emailMessage);
+            }
         }
     }
 }
