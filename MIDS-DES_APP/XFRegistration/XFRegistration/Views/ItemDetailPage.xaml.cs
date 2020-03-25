@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,22 +19,12 @@ namespace XFRegistration.Views
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-
             BindingContext = this.viewModel = viewModel;
+            this.viewModel.SaveEmployeeFinished = SaveEmployeeFinished;
         }
-
-        public ItemDetailPage()
+        private async void SaveEmployeeFinished(Boolean status, String message)
         {
-            InitializeComponent();
-
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
-
-            viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
+            await this.DisplayAlert("Guardar Empleado", message, "Aceptar");
         }
     }
 }

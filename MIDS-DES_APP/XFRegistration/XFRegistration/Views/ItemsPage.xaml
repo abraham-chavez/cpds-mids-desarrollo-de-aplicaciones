@@ -93,8 +93,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="Consultar"/>
-                            <MenuItem Text="Editar"/>
+                            <MenuItem Text="Consultar" Clicked="ViewEmployeeDetail_Clicked"/>
                             <MenuItem Text="Eliminar" Command="{Binding Path=DeleteEmployeeCommand, Source={StaticResource ItemsViewModel}}" CommandParameter="{Binding .}"/>
                             <MenuItem Text="Llamar"/>
                             <MenuItem Text="Envíar email"/>

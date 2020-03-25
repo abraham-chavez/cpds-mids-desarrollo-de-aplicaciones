@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using XFRegistration.Models;
 using XFRegistration.Views;
 using XFRegistration.ViewModels;
+using XFRegistration.Entities;
 
 namespace XFRegistration.Views
 {
@@ -30,11 +31,9 @@ namespace XFRegistration.Views
             await this.DisplayAlert("Eliminar empleado", message, "Aceptar");
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
+        private async void ViewEmployeeDetail_Clicked(object sender, EventArgs e)
         {
-            var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel((Employee)(sender as BindableObject).BindingContext)));
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

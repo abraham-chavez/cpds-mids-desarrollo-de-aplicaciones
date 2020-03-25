@@ -7,6 +7,12 @@
              x:Class="XFRegistration.Views.ItemDetailPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Editar" Command="{Binding Path=EditEmployeeCommand}"/>
+        <ToolbarItem Text="Guardar" Command="{Binding Path=SaveEditEmployeeCommand}"/>
+        <ToolbarItem Text="Cancelar" Command="{Binding Path=CancelEditEmployeeCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Resources>
         <Style x:Key="NameLabel" x:Name="NameLabel" TargetType="Label">
             <Setter Property="FontSize" Value="14"/>
@@ -30,7 +36,7 @@
         </Style>
 
         <Style x:Key="LabelStyle" x:Name="LabelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
     </ContentPage.Resources>
 
@@ -43,7 +49,8 @@
                         <Label Text="Nombre" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.Name, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.Name}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -52,7 +59,8 @@
                         <Label Text="Segundo nombre" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.SecondName, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.SecondName}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -61,7 +69,8 @@
                         <Label Text="Apellidos" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.LastName, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.LastName}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -70,7 +79,8 @@
                         <Label Text="Fecha de nacimiento" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <DatePicker Date="{Binding Path=Employee.Birthday, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}"/>
+                    <Label Text="{Binding Path=Employee.Birthday}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -79,16 +89,18 @@
                         <Label Text="RFC" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.Rfc, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.Rfc}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="mail.png" Style="{StaticResource imageStyle}"/>
-                        <Label Text="Correo electrónico personal" Style="{StaticResource NameLabel}"/>
+                        <Label Text="Correo electrónico personal" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.Email, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.Email}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -97,7 +109,8 @@
                         <Label Text="Número telefónico personal" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.PhoneNumber, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.PhoneNumber}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -106,7 +119,8 @@
                         <Label Text="Departamento" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.Department, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.Department}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -115,7 +129,8 @@
                         <Label Text="Puesto" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.JobPosition, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.JobPosition}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -124,7 +139,8 @@
                         <Label Text="Número telefónico Oficina" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.JobPhoneNumber, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.JobPhoneNumber}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -133,7 +149,8 @@
                         <Label Text="Correo electrónico oficina" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.JobEmail, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.JobEmail}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource imageLabelStackLayout}">
@@ -142,7 +159,8 @@
                         <Label Text="Contraseña" Style="{StaticResource NameLabel}"/>
                     </StackLayout>
 
-                    <Label Text="Nombre" Style="{StaticResource LabelStyle}"/>
+                    <Entry Text="{Binding Path=Employee.Password, Mode=TwoWay}" IsVisible="{Binding Path=IsEntryVisible}" Style="{StaticResource EntryStyle}"/>
+                    <Label Text="{Binding Path=Employee.Password}" IsVisible="{Binding Path=IsLableVisible}" Style="{StaticResource LabelStyle}"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
