@@ -80,5 +80,10 @@ namespace XFRegistration.Views
                 await Email.ComposeAsync(emailMessage);
             }
         }
+
+        private async void ViewLogActivities_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ActivityLog()));
+        }
     }
 }
