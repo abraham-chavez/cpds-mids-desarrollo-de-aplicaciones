@@ -29,5 +29,16 @@
                 <views:AboutPage />
             </x:Arguments>
         </NavigationPage>
+
+        <NavigationPage Title="Mapa">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:MapView />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 </TabbedPage>
